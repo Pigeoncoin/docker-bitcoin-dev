@@ -34,13 +34,13 @@ RUN apt-get update;\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD bdb.sh /tmp/
 RUN sh /tmp/bdb.sh
-RUN wget "http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.6.tar.gz" -O miniupnpc-1.6.tar.gz;\
-	tar -xzvf miniupnpc-1.6.tar.gz; \
-	cd miniupnpc-1.6; \
+RUN wget "http://miniupnp.tuxfamily.org/files/download.php?file=miniupnpc-1.9.tar.gz" -O miniupnpc-1.9.tar.gz;\
+	tar -xzvf miniupnpc-1.9.tar.gz; \
+	cd miniupnpc-1.9; \
 	make; \
 	make install; \
 	cd /; \
-	rm -rf /miniupnpc-1.6;rm miniupnpc-1.6.tar.gz
+	rm -rf /miniupnpc-1.9;rm miniupnpc-1.9.tar.gz
 RUN mkdir -p /home/developer && \
     echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:1000:" >> /etc/group && \
