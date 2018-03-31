@@ -1,23 +1,34 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 RUN apt-get update;\
 	apt-get install -y \
+		sudo \
 		build-essential \
 		libtool \
 		autotools-dev \
-		autoconf \
+		automake \
 		ccache \
 		pkg-config \
 		libssl-dev \
-		libboost-all-dev \
+		libboost-system-dev \
+		libboost-filesystem-dev \
+		libboost-chrono-dev \
+		libboost-program-options-dev \
+		libboost-test-dev \
+		libboost-thread-dev \
+		python3 \
 		wget \
 		bsdmainutils \
 		libqrencode-dev \
-		libqt4-dev \
+		libqt5gui5 \
+		libqt5core5a \
+		libqt5dbus5 \
+		qttools5-dev \
+		qttools5-dev-tools \
 		libprotobuf-dev \
 		protobuf-compiler \
 		git-core \
-		openjdk-7-jdk \
 		gdb \
+		libzmq3-dev \
 		libevent-dev;\
 	apt-get clean;\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -38,5 +49,5 @@ RUN mkdir -p /home/developer && \
     chown developer:developer -R /home/developer
 #RUN echo 0 > /proc/sys/kernel/yama/ptrace_scope
 ENV HOME /home/developer
-RUN mkdir /bitcoin; chown -R developer:developer /bitcoin
-WORKDIR /bitcoin
+RUN mkdir /pigeoncoin; chown -R developer:developer /pigeoncoin
+WORKDIR /pigeoncoin
