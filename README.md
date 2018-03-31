@@ -19,8 +19,8 @@ In order to build Pigeoncoin, assuming you are in a folder where you want to clo
 git clone https://github.com/bitcoin/bitcoin.git
 git clone https://github.com/Pigeoncoin/docker-pigeon-dev
 cd docker-pigeon-dev
-sudo docker build .
-sudo docker run -ti -v `pwd`/../pigeoncoin:/pigeoncoin
+sudo docker build . -t pigeon-dev
+sudo docker run -ti -v `pwd`/../pigeoncoin:/pigeoncoin pigeon-dev
 ```
 
 Once the container has started and you are dropped into its shell, execute:
