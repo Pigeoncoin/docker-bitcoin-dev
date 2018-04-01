@@ -16,7 +16,7 @@ Building and developing Pigeoncoin in docker containers.
 # Quickstart
 In order to build Pigeoncoin, assuming you are in a folder where you want to clone both this repo and the pigeoncoin repo
 ```
-git clone https://github.com/bitcoin/bitcoin.git
+git clone https://github.com/Pigeoncoin/pigeoncoin.git
 git clone https://github.com/Pigeoncoin/docker-pigeon-dev
 cd docker-pigeon-dev
 sudo docker build . -t pigeon-dev
