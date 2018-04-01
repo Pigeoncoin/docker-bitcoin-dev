@@ -1,0 +1,26 @@
+FROM ubuntu:14.04
+RUN apt-get update;\
+	apt-get install -y \
+		sudo \
+		build-essential \
+		libtool \
+		autotools-dev \
+		automake \
+		ccache \
+		pkg-config \
+		wget \
+		bsdmainutils \
+		git-core \
+		curl \	
+		g++-mingw-w64-x86-64;\
+	apt-get clean;\
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN mkdir -p /home/developer && \
+    echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+    echo "developer:x:1000:" >> /etc/group && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
+    chmod 0440 /etc/sudoers.d/developer && \
+    chown developer:developer -R /home/developer
+ENV HOME /home/developer
+RUN mkdir /pigeoncoin; chown -R developer:developer /pigeoncoin
+WORKDIR /pigeoncoin
