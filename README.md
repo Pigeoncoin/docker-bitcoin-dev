@@ -22,15 +22,36 @@ cd docker-pigeon-dev
 sudo docker build . -t pigeon-dev
 sudo docker run -ti -v `pwd`/../pigeoncoin:/pigeoncoin pigeon-dev
 ```
+The development container will be started and you will be dropped into its shell.
+## Build Windows binarires
+In the container shell, run the following:
+```
+cd depends
+make HOST=x86_64-w64-mingw32
+cd ..
+./autogen.sh
 
-Once the container has started and you are dropped into its shell, execute:
+cd ..
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+make
+
+./configure --enable-cxx --disable-shared --with-pic --host=mingw CXXFLAGS="-fPIC -O" CPPFLAGS="-fPIC -O"
+make
+```
+
+## Build Linux binaries
+In the container shell, run the following:
 ```
 ./autogen.sh
 ./configure --enable-cxx --disable-shared --with-pic CXXFLAGS="-fPIC -O" CPPFLAGS="-fPIC -O"
 make
 ```
-This will result in the Linux executables in ../pigeoncoin/src (where the pigeoncoin repo got cloned to)
+This will result in the Linux executables in ../pigeoncoin/src (where the pigeoncoin repo got cloned to)-
+* src/pigeond
+* src/pigeon-cli
+* src/pigeon-tx
+* src/qt/pigeon-qt
 
-TODO: Cross compilation
 # Running IDEs
 TODO

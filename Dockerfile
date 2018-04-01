@@ -29,7 +29,9 @@ RUN apt-get update;\
 		git-core \
 		gdb \
 		libzmq3-dev \
-		libevent-dev;\
+		libevent-dev \
+		curl \
+		g++-mingw-w64-x86-64;\
 	apt-get clean;\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD bdb.sh /tmp/
